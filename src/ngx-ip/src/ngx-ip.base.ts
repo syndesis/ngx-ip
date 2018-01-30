@@ -417,6 +417,8 @@ export class NgxIpBase implements OnChanges, ControlValueAccessor, Validator {
     let arr = this.addr.split(data, this.separator);
     if (arr.length === this.addr.BLOCK_COUNT) {
       this.value = this.fromBlocks(arr);
+      this.markValidity();
+      this.notifyChange(this.fromBlocks(arr));
     } else {
       const value = inputSelection.insert(this.getInputElement(blockIndex), arr[0]);
       this.onChange(value, blockIndex);
